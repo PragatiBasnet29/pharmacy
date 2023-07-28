@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Data Collection Form</title>
+</head>
+
+ <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+
+
+ <script>
+    function addInputField() {
+      var container = document.getElementById("input-container");
+      var inputField = document.createElement("input");
+      inputField.type = "text";
+      inputField.name = "drug_trade_name[]";
+      inputField.placeholder = "Drug Trade Name";
+      container.appendChild(inputField);
+    }
+
+    function removeInputField() {
+      var container = document.getElementById("input-container");
+      var inputFields = container.getElementsByTagName("input");
+      if (inputFields.length > 0) {
+        container.removeChild(inputFields[inputFields.length - 1]);
+      }
+    }
+  // JavaScript code
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var addButton = document.getElementById("add-button");
+      var removeButton = document.getElementById("remove-button");
+      var container = document.getElementById("input-container");
+	var form = document.getElementById("data-form");
+
+      addButton.addEventListener("click", function() {
+        var inputField = document.createElement("input");
+        inputField.type = "text";
+        inputField.name = "drug_trade_name[]";
+        inputField.placeholder = "Drug Trade Name";
+        container.appendChild(inputField);
+      });
+
+      removeButton.addEventListener("click", function() {
+        var inputFields = container.getElementsByTagName("input");
+        if (inputFields.length > 1) {
+          container.removeChild(inputFields[inputFields.length - 1]);
+        }
+      });
+    });
+  </script>
+
+
+<body>
+
+ <div class="container">
+	
+  <h1>Data Collection Form</h1>
+  <form action="submit.php" method="POST">
+    <label for="patient_ssn">Patient SSN:</label>
+    <input type="text" id="patient_ssn" name="patient_ssn" required>
+<div class="form-group">
+    <label for="patient_name">Patient Name:</label>
+    <input type="text" id="patient_name" name="patient_name" required>
+</div>
+
+
+<div class="form-group">
+    <label for="patient_address">Patient Address:</label>
+    <input type="text" id="patient_address" name="patient_address" required>
+</div>
+
+
+<div class="form-group">
+    <label for="patient_age">Patient Age:</label>
+    <input type="number" id="patient_age" name="patient_age" required>
+</div>
+
+
+<div class="form-group">
+    <label for="doctor_ssn">Doctor SSN:</label>
+    <input type="text" id="doctor_ssn" name="doctor_ssn" required>
+</div>
+
+<div class="form-group">
+    <label for="doctor_name">Doctor Name:</label>
+    <input type="text" id="doctor_name" name="doctor_name" required>
+</div>
+
+
+ 
+<div class="form-group">
+   <label for="doctor_specialty">Doctor Specialty:</label>
+    <input type="text" id="doctor_specialty" name="doctor_specialty" required>
+</div>
+
+<div class="form-group">
+    <label for="doctor_experience">Doctor Experience:</label>
+    <input type="number" id="doctor_experience" name="doctor_experience" required>
+</div>
+
+<div class="form-group">
+    <label for="company_name">Company Name:</label>
+    <input type="text" id="company_name" name="company_name" required>
+</div>
+
+<div class="form-group">
+    <label for="company_phone">Company Phone:</label>
+    <input type="tel" id="company_phone" name="company_phone" required>
+</div>
+
+
+<div class="form-group">
+    <label for="pharmacy_name">Pharmacy Name:</label>
+    <input type="text" id="pharmacy_name" name="pharmacy_name" required>
+</div>
+
+<div class="form-group">
+    <label for="pharmacy_address">Pharmacy Address:</label>
+    <input type="text" id="pharmacy_address" name="pharmacy_address" required>
+</div>
+
+<div class="form-group">
+    <label for="pharmacy_phone">Pharmacy Phone:</label>
+    <input type="tel" id="pharmacy_phone" name="pharmacy_phone" required>
+</div>
+
+<div class="form-group">
+    <label for="prescription_date">Prescription Date:</label>
+    <input type="date" id="prescription_date" name="prescription_date" required>
+</div>
+
+<div class="form-group">
+    <label for="prescription_quantity">Prescription Quantity:</label>
+    <input type="number" id="prescription_quantity" name="prescription_quantity" required>
+</div>
+
+<div class="form-group">
+    <label for="contract_start_date">Contract Start Date:</label>
+    <input type="date" id="contract_start_date" name="contract_start_date" required>
+</div>
+
+<div class="form-group">
+    <label for="contract_end_date">Contract End Date:</label>
+    <input type="date" id="contract_end_date" name="contract_end_date" required>
+</div>
+
+<div class="form-group">
+    <label for="contract_text">Contract Text:</label>
+    <textarea id="contract_text" name="contract_text" required></textarea>
+</div>
+<div class="form-group">
+        <label for="drug_trade_name">Drug Trade Name:</label>
+        <div id="input-container">
+          <input type="text" name="drug_trade_name[]" placeholder="Drug Trade Name" required>
+        </div>
+        <div class="add-remove-buttons">
+          <button type="button" class="add-button" onclick="addInputField()">Add</button>
+          <button type="button" class="remove-button" onclick="removeInputField()">Remove</button>
+        </div>
+      </div>
+
+<div class="form-group">
+    <label for="contract_supervisor">Contract Supervisor:</label>
+    <input type="text" id="contract_supervisor" name="contract_supervisor" required>
+    <input type="submit" value="Submit">
+</div>
+
+
+
+  </form>
+</body>
+</html>
